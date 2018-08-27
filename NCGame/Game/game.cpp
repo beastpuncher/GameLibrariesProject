@@ -9,78 +9,91 @@
 #include "timer.h"
 #include "matrix22.h"
 #include "component.h"
-#include "transformComponent.h"
-#include "spriteComponent.h"
-#include "shipControllerComponent.h"
 #include "entity.h"
 #include "SDL.h"
 #include "scene.h"
-#include "kinematicComponent.h"
+#include "ship.h"
+#include "enemy.h"
+#include "fileSystem.h"
+#include "spriteComponent.h"
+#include "renderComponent.h"
+#include "animationComponent.h"
+#include "textComponent.h"
+#include "eventManager.h"
+#include "stateMachine.h"
+#include "timer.h"
+#include "states.h"
 #include <fmod.hpp>
+#include <vector>
+#include <iostream>
 
 bool Game::Initialize()
 {
 	bool success = m_engine->Initialize();
+	FileSystem::Instance()->SetPathname("..\\Content\\Galaga\\");
 
 	
-	Renderer::Instance()->Initialize(m_engine);
-	TextureManager::Instance()->Initialize(m_engine);
-	TextManager::Instance()->Initialize(m_engine);
+	EventManager::Instance()->SetGameEventReceiver(this);
 
 	m_scene = new Scene();
+	m_stateMachine = new StateMachine(m_scene);
 
-	for (size_t i = 0; i < 20; i++) {
+	m_stateMachine->AddState("title", new TitleState(m_stateMachine));
+	m_stateMachine->AddState("game", new GameState(m_stateMachine));
 
-		Entity* entity = new Entity();
-		TransformComponent* transformComponent = new TransformComponent(entity);
-		float x = (float)(rand() % 800);
-		float y = (float)(rand() & 600);
+	m_stateMachine->SetState("title");
 
-		transformComponent->Create(Vector2D(x,y));
-		entity->AddComponent(transformComponent);
+	Entity* entity = new Entity(m_scene, "score");
+	entity->GetTransform().position = Vector2D(20.0f, 20.0f);
+	TextComponent* textComponent = entity->AddComponent<TextComponent>();
+	textComponent->Create(" 0000", "emulogic.ttf", 18, Color::white);
+	textComponent->SetDepth(100);
+	m_scene->AddEntity(entity);
 
-		m_scene->AddEntity(entity);
+	//SpriteComponent* spriteComponent = entity->AddComponent<SpriteComponent>();
+	//spriteComponent->Create("galaga.png", Vector2D(0.5, 0.5f));
+	//spriteComponent->SetDepth(1);
 
-	SpriteComponent* spriteComponent = new SpriteComponent(entity);
-	spriteComponent->Create("..\\Content\\ship.png");
-	entity->AddComponent(spriteComponent);
+	
 
-	KinematicComponent* kinematic = new KinematicComponent(entity);
-	kinematic->Create();
-	entity->AddComponent(kinematic);
-
-	ShipControllerComponent* shipController = new ShipControllerComponent(entity);
-	shipController->Create(50.0f);
-	if(i == 1) entity->AddComponent(shipController);
-	}
 	m_running = success;
 	return success;
 }
 
 void Game::Shutdown()
 {
-	InputManager::Instance()->Shutdown();
-	AudioSystems::Instance()->Shutdown();
-	TextureManager::Instance()->Shutdown();
-	Renderer::Instance()->Shutdown();
-
 	SDL_DestroyRenderer(Renderer::Instance()->GetRenderer());
 	m_engine->Shutdown();
 }
 
 void Game::Update()
 {
-	
-	
-
-	m_scene->Update();
-
-	Renderer::Instance()->Beginframe();
-	Renderer::Instance()->SetColor(Color::red);
-
-	m_scene->Draw();
-
-	Renderer::Instance()->EndFrame();
 	m_running = !m_engine->IsQuit();
 	m_engine->Update();
+	m_stateMachine->Update();
+
+	Entity* score = m_scene->GetEntityWithID("score");
+	if (score)
+	{
+		TextComponent* textComp = score->GetComponent<TextComponent>();
+		std::string _score = std::to_string(m_score);
+		while (_score.length() < 5) _score = "0" + _score;
+		textComp->SetText(_score);
+	}
+
+	Renderer::Instance()->Beginframe();
+
+	m_scene->Update();
+	m_scene->Draw();
+	Renderer::Instance()->SetColor(Color::black);
+
+	Renderer::Instance()->EndFrame();
+}
+
+void Game::OnEvent(const Event & event)
+{
+	if (event.eventID == "add_score")
+	{
+		m_score += event.varient.asInt;
+	}
 }

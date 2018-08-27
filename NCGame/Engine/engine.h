@@ -8,6 +8,10 @@
 #endif 
 
 #pragma warning(disable:4251)
+#pragma warning(disable:4305)
+#pragma warning(disable:4244)
+#pragma warning(disable:4018)
+
 
 #include "sdl.h"
 
@@ -24,10 +28,12 @@ public:
 	void Shutdown();
 
 	bool IsQuit() { return m_isQuit; }
+	bool IsDebug() { return m_IsDebug; }
 	SDL_Window* GetWindow() { return m_window; }
 
 protected:
 	bool m_isQuit = false;
+	bool m_IsDebug;
 	SDL_Window* m_window = nullptr;
 	
 };

@@ -25,6 +25,15 @@
     <Filter Include="Header Files\Math">
       <UniqueIdentifier>{e013ab5d-267a-4eca-80a7-fcad9ac13157}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{e2744d23-5576-43e3-a4f4-035f75a5dc26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{fa4fb1e3-c516-49c5-a636-e964efdb525d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framwork">
+      <UniqueIdentifier>{0c79e1b9-8e70-48c2-add8-d81173ced521}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine.h">
@@ -50,9 +59,6 @@
     </ClInclude>
     <ClInclude Include="vector3D.h">
       <Filter>Header Files\Math</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="audioSystems.h">
       <Filter>Header Files\Systems</Filter>
@@ -90,9 +96,6 @@
     <ClInclude Include="spriteComponent.h">
       <Filter>Header Files\Componets</Filter>
     </ClInclude>
-    <ClInclude Include="transformComponent.h">
-      <Filter>Header Files\Componets</Filter>
-    </ClInclude>
     <ClInclude Include="texture.h">
       <Filter>Header Files\Componets</Filter>
     </ClInclude>
@@ -102,14 +105,74 @@
     <ClInclude Include="scene.h">
       <Filter>Header Files\OBJ</Filter>
     </ClInclude>
-    <ClInclude Include="physics.h">
-      <Filter>Header Files\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="physicsComponent.h">
-      <Filter>Header Files\Componets</Filter>
-    </ClInclude>
     <ClInclude Include="kinematicComponent.h">
       <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="transform.h">
+      <Filter>Header Files\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="fileSystem.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="collisionComponent.h">
+      <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="physicsComponent.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="aabb.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="aabbComponent.h">
+      <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="event.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="eventManager.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="textComponent.h">
+      <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="eventReceiver.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="animationComponent.h">
+      <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="shipExplosion.h">
+      <Filter>Header Files\OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="state.h">
+      <Filter>Framwork</Filter>
+    </ClInclude>
+    <ClInclude Include="stateMachine.h">
+      <Filter>Framwork</Filter>
+    </ClInclude>
+    <ClInclude Include="varient.h">
+      <Filter>Framwork</Filter>
+    </ClInclude>
+    <ClInclude Include="waypoint.h">
+      <Filter>Header Files\OBJ</Filter>
+    </ClInclude>
+    <ClInclude Include="debugDraw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="waypointControllerComponent.h">
+      <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="transfromControllerComponent.h">
+      <Filter>Header Files\Componets</Filter>
+    </ClInclude>
+    <ClInclude Include="explosion.h">
+      <Filter>Header Files\OBJ</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -136,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="vector3D.cpp">
       <Filter>Header Files\Math</Filter>
-    </ClCompile>
-    <ClCompile Include="timer.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="audioSystems.cpp">
       <Filter>Header Files\Systems</Filter>
@@ -170,9 +230,6 @@
     <ClCompile Include="spriteComponent.cpp">
       <Filter>Header Files\Componets</Filter>
     </ClCompile>
-    <ClCompile Include="transformComponent.cpp">
-      <Filter>Header Files\Componets</Filter>
-    </ClCompile>
     <ClCompile Include="texture.cpp">
       <Filter>Header Files\Componets</Filter>
     </ClCompile>
@@ -182,11 +239,62 @@
     <ClCompile Include="controllerComponent.cpp">
       <Filter>Header Files\Componets</Filter>
     </ClCompile>
-    <ClCompile Include="physics.cpp">
-      <Filter>Header Files\Systems</Filter>
-    </ClCompile>
     <ClCompile Include="kinematicComponent.cpp">
       <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="transform.cpp">
+      <Filter>Header Files\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="fileSystem.cpp">
+      <Filter>Header Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="aabb.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="aabbComponent.cpp">
+      <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="eventManager.cpp">
+      <Filter>Event</Filter>
+    </ClCompile>
+    <ClCompile Include="textComponent.cpp">
+      <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="animationComponent.cpp">
+      <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="shipExplosion.cpp">
+      <Filter>Header Files\OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="state.cpp">
+      <Filter>Framwork</Filter>
+    </ClCompile>
+    <ClCompile Include="stateMachine.cpp">
+      <Filter>Framwork</Filter>
+    </ClCompile>
+    <ClCompile Include="waypoint.cpp">
+      <Filter>Header Files\OBJ</Filter>
+    </ClCompile>
+    <ClCompile Include="debugDraw.cpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>Header Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="waypointControllerComponent.cpp">
+      <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="transformComponent.cpp">
+      <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="transfromControllerComponent.cpp">
+      <Filter>Header Files\Componets</Filter>
+    </ClCompile>
+    <ClCompile Include="explosion.cpp">
+      <Filter>Header Files\OBJ</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

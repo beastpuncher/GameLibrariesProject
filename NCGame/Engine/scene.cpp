@@ -1,7 +1,12 @@
 #include "scene.h"
 #include "entity.h"
+#include "collisionComponent.h"
+#include "audioSystems.h"
+#include "eventManager.h"
+#include "renderComponent.h"
 #include "id.h"
 #include <assert.h>
+#include <algorithm>
 
 bool Scene::Initialize()
 {
@@ -14,6 +19,54 @@ void Scene::Update()
 	{
 		entity->Update();
 	}
+
+	// update collision
+	std::vector<ICollisionComponent*> collisionComponents;
+
+	for (Entity* entity : m_entities)
+	{
+		ICollisionComponent* collisionComponent = entity->GetComponent<ICollisionComponent>();
+		if (collisionComponent)
+		{
+			collisionComponents.push_back(collisionComponent);
+		}
+	}
+
+	for (size_t i = 0; i < collisionComponents.size(); i++)
+	{
+		for (size_t j = i +1; j < collisionComponents.size(); j++)
+		{
+			if (collisionComponents[i]->Intersects(collisionComponents[j]))
+			{
+				Event event;
+				event.eventID = "collision";
+
+				event.reciver = collisionComponents[i]->GetOwner();
+				event.sender = collisionComponents[j]->GetOwner();
+				EventManager::Instance()->SendMessage(event);
+
+				event.reciver = collisionComponents[j]->GetOwner();
+				event.sender = collisionComponents[i]->GetOwner();
+				EventManager::Instance()->SendMessage(event);
+			}
+		}
+	}
+
+
+	std::list <Entity*>::iterator iter = m_entities.begin();
+	while (iter != m_entities.end())
+	{
+		if ((*iter)->GetState() == Entity::DESTROY)
+		{
+			(*iter)->Destroy();
+			iter = RemoveEntity(*iter);
+		}
+		else 
+		{
+			iter++;
+		}
+	}
+
 }
 
 void Scene::Shutdown()
@@ -27,9 +80,23 @@ void Scene::Shutdown()
 
 void Scene::Draw()
 {
+	std::vector<IRenderComponent*> renderComponents;
+
 	for (Entity* entity : m_entities)
 	{
-		entity->Draw();
+		IRenderComponent* renderComponent = entity->GetComponent<IRenderComponent>();
+		if (renderComponent)
+		{
+			renderComponents.push_back(renderComponent);
+		}
+	}
+	std::sort(renderComponents.begin(),renderComponents.end(),IRenderComponent::CompareDepth);
+	for (IRenderComponent* render : renderComponents)
+	{
+		if (render->GetVisible())
+		{
+			render->Draw();
+		}
 	}
 }
 
@@ -41,7 +108,7 @@ void Scene::AddEntity(Entity * entity)
 	m_entities.push_back(entity);
 }
 
-void Scene::RemoveEntity(Entity * entity)
+std::list <Entity*>::iterator Scene::RemoveEntity(Entity * entity, bool Destroy)
 {
 	assert(entity);
 	assert(std::find(m_entities.begin(), m_entities.end(), entity) != m_entities.end());
@@ -49,12 +116,17 @@ void Scene::RemoveEntity(Entity * entity)
 	auto iter = std::find(m_entities.begin(), m_entities.end(), entity);
 	if (iter != m_entities.end())
 	{
-		m_entities.erase(iter);
+		if (Destroy)
+		{
+			(*iter)->Destroy();
+			delete *iter;
+		}
+		iter = m_entities.erase(iter);
 	}
-
+	return iter;
 }
 
-Entity * Scene::FindEntity(const ID& id)
+Entity * Scene::GetEntityWithID(const ID& id)
 {
 	Entity* entity = nullptr;
 
@@ -67,4 +139,19 @@ Entity * Scene::FindEntity(const ID& id)
 			}
 		}
 	return entity;
+}
+
+std::vector<Entity*> Scene::GetEntitiesWithTag(const ID & tag)
+{
+	std::vector<Entity*> entities;
+
+	for (Entity* entity : m_entities)
+	{
+		if (entity->GetTag() == tag)
+		{
+			entities.push_back(entity);
+		}
+	}
+
+	return entities;
 }

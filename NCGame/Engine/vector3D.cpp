@@ -84,27 +84,27 @@ Vector3D Vector3D::Normalized() const
 	}
 }
 
-inline float Vector3D::LengthSquared(const Vector3D& v1, const Vector3D& v2)
+float Vector3D::LengthSquared(const Vector3D& v1, const Vector3D& v2)
 {
 	return (v1 - v2).LengthSquared();
 }
 
-inline float Vector3D::Length(const Vector3D& v1, const Vector3D& v2)
+float Vector3D::Length(const Vector3D& v1, const Vector3D& v2)
 {
 	return (v1 - v2).Length();
 }
 
-inline float Vector3D::Dot(const Vector3D& v1, const Vector3D& v2)
+float Vector3D::Dot(const Vector3D& v1, const Vector3D& v2)
 {
 	return ((v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z));
 }
 
-inline Vector3D Vector3D::Min(const Vector3D& v1, const Vector3D& v2)
+Vector3D Vector3D::Min(const Vector3D& v1, const Vector3D& v2)
 {
 	return Vector3D(v1.x < v2.x ? v1.x : v2.x, v1.y < v2.y ? v1.y : v2.y, v1.z < v2.z ? v1.z : v2.z);
 }
 
-inline Vector3D Vector3D::Max(const Vector3D& v1, const Vector3D& v2)
+Vector3D Vector3D::Max(const Vector3D& v1, const Vector3D& v2)
 {
 	return Vector3D(v1.x > v2.x ? v1.x : v2.x, v1.y > v2.y ? v1.y : v2.y, v1.z > v2.z ? v1.z : v2.z);
 }

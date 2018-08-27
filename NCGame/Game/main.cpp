@@ -1,7 +1,7 @@
 #include "engine.h"
 #include "game.h"
 
-int wmain(int argz, char* argv[])
+int main(int argz, char* argv[])
 {
 	Engine engine;
 	Game game(&engine);
@@ -12,6 +12,5 @@ int wmain(int argz, char* argv[])
 		game.Update();
 	}
 	game.Shutdown();
-
 	return 0;
 }

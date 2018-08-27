@@ -36,8 +36,8 @@ bool InputManager::Initialize(Engine * engine)
 
 void InputManager::Shutdown()
 {
-	delete m_keystate;
-	delete m_prevKeystate;
+	delete[] m_keystate;
+	delete[] m_prevKeystate;
 }
 
 void InputManager::Update()

@@ -1,6 +1,18 @@
 #include "entity.h"
 #include "renderComponent.h"
+#include "collisionComponent.h"
 #include <assert.h>
+
+void Entity::Destroy()
+{
+	for (Component* component : m_components)
+	{
+		component->Destroy();
+		delete component;
+	}
+
+	m_components.clear();
+}
 
 void Entity::Update()
 {
@@ -19,7 +31,13 @@ void Entity::Draw()
 	}
 }
 
-void Entity::AddComponent(Component * component)
+void Entity::OnEvent(const Event & event)
+{
+}
+
+
+
+void Entity::AddComponent(Component* component)
 {
 	assert(component);
 	assert(std::find(m_components.begin(), m_components.end(), component) == m_components.end());
@@ -33,7 +51,23 @@ void Entity::RemoveComponent(Component * component)
 	assert(std::find(m_components.begin(), m_components.end(), component) != m_components.end());
 
 	auto iter = std::find(m_components.begin(), m_components.end(), component);
+	(*iter)->Destroy();
 	delete *iter;
 	m_components.erase(iter);
 
+}
+
+bool Entity::Intersects(Entity * otherEntity)
+{
+	bool intersects = false;
+
+	ICollisionComponent* collisionA = GetComponent<ICollisionComponent>();
+	ICollisionComponent* collisionB = otherEntity->GetComponent<ICollisionComponent>();
+
+	if (collisionA && collisionB)
+	{
+		intersects = collisionA->Intersects(collisionB);
+	}
+
+	return intersects;
 }

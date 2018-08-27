@@ -11,6 +11,9 @@
 #include "audioSystems.h"
 #include "physics.h"
 #include "physicsComponent.h"
+#include "physics.h"
+#include "fileSystem.h"
+#include "eventManager.h"
 #include <iostream>
 
 bool Engine::Initialize()
@@ -21,6 +24,16 @@ bool Engine::Initialize()
 	Timer::Instance()->Initialize(this);
 	InputManager::Instance()->Initialize(this);
 	AudioSystems::Instance()->Initialize(this);
+	Renderer::Instance()->Initialize(this);
+	TextureManager::Instance()->Initialize(this);
+	TextManager::Instance()->Initialize(this);
+	FileSystem::Instance()->Initialize(this);
+	EventManager::Instance()->Initialize(this);
+
+	m_IsDebug = true;
+
+	Physics::Instance()->SetGravity(Vector2D(0.0f, 50.0f));
+
 	return true;
 }
 
@@ -29,6 +42,9 @@ void Engine::Shutdown()
 	Physics::Instance()->Shutdown();
 	InputManager::Instance()->Shutdown();
 	AudioSystems::Instance()->Shutdown();
+	FileSystem::Instance()->Shutdown();
+	TextureManager::Instance()->Shutdown();
+	Renderer::Instance()->Shutdown();
 	SDL_DestroyWindow(m_window);
 	SDL_Quit();
 }
@@ -36,10 +52,11 @@ void Engine::Shutdown()
 void Engine::Update()
 {
 	Timer::Instance()->Update();
-	Timer::Instance()->SetTimeScale(10.0f);
+	Timer::Instance()->SetTimeScale(1.0f);
 	InputManager::Instance()->Update();
 	AudioSystems::Instance()->Update();
 	Physics::Instance()->Update();
+	FileSystem::Instance()->Update();
 
 	SDL_Event event;
 	SDL_PollEvent(&event);
@@ -53,11 +70,13 @@ void Engine::Update()
 		if (event.key.keysym.sym == SDLK_ESCAPE)
 		{
 			m_isQuit = true;
-			break;
 		}
 	}
+	SDL_PumpEvents();	
 
-	SDL_PumpEvents();
+	if (InputManager::Instance()->GetButtonState(SDL_SCANCODE_GRAVE) == InputManager::eButtonState::PRESSED)
+	{
+		m_IsDebug = !IsDebug();
+	}
 
-	
 }

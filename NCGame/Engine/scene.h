@@ -1,6 +1,8 @@
 #pragma once
 #include "engine.h"
 #include "id.h"
+#include <assert.h>
+#include <list>
 #include <vector>
 
 class Entity;
@@ -16,13 +18,27 @@ public:
 	void Shutdown();
 	void Draw();
 
-	void AddEntity(Entity* entity);
-	void RemoveEntity(Entity* entity);
 
-	Entity* FindEntity(const ID& id);
+	template <typename T>
+	T* AddEntity(const ID& id = ID())
+	{
+		T* entity = new T(this,id);
+		assert(dynamic_cast<Entity*>(entity));
+		if(entity) m_entities.push_back(entity);
+
+		return entity;
+	}
+
+
+	void AddEntity(Entity* entity);
+	std::list <Entity*>::iterator RemoveEntity(Entity* entity, bool destroy = true);
+
+	Entity* GetEntityWithID(const ID& id);
+	std::vector<Entity*> GetEntitiesWithTag(const ID& tag);
 
 protected:
 
-	std::vector<Entity*> m_entities;
+	Engine* m_engine;
+	std::list<Entity*> m_entities;
 
 };

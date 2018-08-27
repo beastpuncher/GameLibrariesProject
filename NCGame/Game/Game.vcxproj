@@ -90,7 +90,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Middleware\api\lowlevel\inc;$(ProjectDir)..\Engine;$(ProjectDir)..\..\Middleware\SDL2-2.0.8\lib\x64;$(ProjectDir)..\..\Middleware\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2Main.lib;fmod_vc.lib;fmod64_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -121,9 +125,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="enemyControllerComponent.cpp" />
+    <ClCompile Include="formation.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="missile.cpp" />
+    <ClCompile Include="ship.cpp" />
     <ClCompile Include="shipControllerComponent.cpp" />
+    <ClCompile Include="states.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -131,8 +141,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="enemy.h" />
+    <ClInclude Include="enemyControllerComponent.h" />
+    <ClInclude Include="formation.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="missile.h" />
+    <ClInclude Include="ship.h" />
     <ClInclude Include="shipControllerComponent.h" />
+    <ClInclude Include="states.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
