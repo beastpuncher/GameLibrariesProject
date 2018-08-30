@@ -39,6 +39,7 @@ bool Game::Initialize()
 	m_stateMachine = new StateMachine(m_scene);
 
 	m_stateMachine->AddState("title", new TitleState(m_stateMachine));
+	m_stateMachine->AddState("enter_stage", new EnterStageState(m_stateMachine));
 	m_stateMachine->AddState("game", new GameState(m_stateMachine));
 
 	m_stateMachine->SetState("title");
@@ -50,11 +51,13 @@ bool Game::Initialize()
 	textComponent->SetDepth(100);
 	m_scene->AddEntity(entity);
 
-	//SpriteComponent* spriteComponent = entity->AddComponent<SpriteComponent>();
-	//spriteComponent->Create("galaga.png", Vector2D(0.5, 0.5f));
-	//spriteComponent->SetDepth(1);
+	Entity* life = new Entity(m_scene, "LifeCounter");
+	life->GetTransform().position = Vector2D(100.0f, 500.0f);
+	TextComponent* textComponents = life->AddComponent<TextComponent>();
+	textComponents->Create("Lives: " + m_lives, "emulogic.ttf", 18, Color::white);
+	textComponents->SetDepth(100);
+	m_scene->AddEntity(life);
 
-	
 
 	m_running = success;
 	return success;
@@ -72,6 +75,11 @@ void Game::Update()
 	m_engine->Update();
 	m_stateMachine->Update();
 
+	if (m_lives < 0)
+	{
+		m_running = false;
+	}
+
 	Entity* score = m_scene->GetEntityWithID("score");
 	if (score)
 	{
@@ -79,6 +87,15 @@ void Game::Update()
 		std::string _score = std::to_string(m_score);
 		while (_score.length() < 5) _score = "0" + _score;
 		textComp->SetText(_score);
+	}
+
+	Entity* life = m_scene->GetEntityWithID("LifeCounter");
+	if (life)
+	{
+		TextComponent* textComp = life->GetComponent<TextComponent>();
+		std::string _life = std::to_string(m_lives);
+		textComp->SetText(_life);
+		
 	}
 
 	Renderer::Instance()->Beginframe();
@@ -95,5 +112,12 @@ void Game::OnEvent(const Event & event)
 	if (event.eventID == "add_score")
 	{
 		m_score += event.varient.asInt;
+	}
+	if (event.eventID == "loose life")
+	{
+		Ship* ship = dynamic_cast<Ship*>(m_scene->GetEntityWithID("player"));
+			m_lives = m_lives - 1;
+		//	std::cout << ship->GetPlayerLives() << std::endl;
+			//ship->SetPlayerLives(ship->GetPlayerLives() - 1);
 	}
 }

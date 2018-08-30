@@ -20,6 +20,8 @@ public:
 	void UnPause() { m_paused = false; }
 	bool IsPaused() { return m_paused; }
 
+	void Reset();
+
 	friend Singleton<Timer>;
 	
 protected:
@@ -27,9 +29,13 @@ protected:
 
 private:
 	Engine * m_engine = nullptr;
+	float m_fps;
 	float m_dt;
 	float m_timeScale;
+	int m_frameCounter;
 	Uint32 m_prevTicks;
+	Uint32 m_startTicks;
 	bool m_paused;
+	const int FRAME_COUNT = 100;
 
 };

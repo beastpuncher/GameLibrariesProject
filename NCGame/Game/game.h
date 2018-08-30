@@ -21,6 +21,7 @@ public:
 
 protected:
 	size_t m_score = 0;
+	int m_lives = 3;
 
 	Engine* m_engine;
 	bool m_running = false;

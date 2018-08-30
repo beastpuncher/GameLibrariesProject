@@ -23,3 +23,10 @@ void Timer::Update()
 
 
 }
+
+void Timer::Reset()
+{
+	m_prevTicks = SDL_GetTicks();
+	m_frameCounter = 0;
+	m_startTicks = 0;
+}
