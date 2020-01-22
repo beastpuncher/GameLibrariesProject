@@ -1,0 +1,22 @@
+﻿  enemy.cpp
+c:\users\tyler\source\repos\ncgame\game\enemy.h(2): fatal error C1083: Cannot open include file: 'entity.h': No such file or directory
+  enemyControllerComponent.cpp
+c:\users\tyler\source\repos\ncgame\game\enemycontrollercomponent.h(3): fatal error C1083: Cannot open include file: 'vector2D.h': No such file or directory
+  enemyTargetControllerComponent.cpp
+c:\users\tyler\source\repos\ncgame\game\enemytargetcontrollercomponent.h(2): fatal error C1083: Cannot open include file: 'vector2D.h': No such file or directory
+  enemyWaypointControllerComponent.cpp
+c:\users\tyler\source\repos\ncgame\game\enemywaypointcontrollercomponent.h(2): fatal error C1083: Cannot open include file: 'controllerComponent.h': No such file or directory
+  game.cpp
+c:\users\tyler\source\repos\ncgame\game\game.h(2): fatal error C1083: Cannot open include file: 'eventReceiver.h': No such file or directory
+  main.cpp
+c:\users\tyler\source\repos\ncgame\game\main.cpp(1): fatal error C1083: Cannot open include file: 'engine.h': No such file or directory
+  missile.cpp
+c:\users\tyler\source\repos\ncgame\game\missile.h(2): fatal error C1083: Cannot open include file: 'entity.h': No such file or directory
+  ship.cpp
+c:\users\tyler\source\repos\ncgame\game\ship.h(2): fatal error C1083: Cannot open include file: 'entity.h': No such file or directory
+  shipControllerComponent.cpp
+c:\users\tyler\source\repos\ncgame\game\shipcontrollercomponent.h(3): fatal error C1083: Cannot open include file: 'vector2D.h': No such file or directory
+  states.cpp
+c:\users\tyler\source\repos\ncgame\game\states.h(2): fatal error C1083: Cannot open include file: 'state.h': No such file or directory
+  transfromControllerComponent.cpp
+c:\users\tyler\source\repos\ncgame\game\transfromcontrollercomponent.h(3): fatal error C1083: Cannot open include file: 'vector2D.h': No such file or directory

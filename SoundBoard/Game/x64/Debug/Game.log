@@ -1,0 +1,14 @@
+﻿  enemy.cpp
+c:\users\tyler\documents\github\gamelibrariesproject\ncgame\engine\animationcomponent.h(25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  enemyControllerComponent.cpp
+  formation.cpp
+  game.cpp
+c:\users\tyler\documents\github\gamelibrariesproject\ncgame\engine\animationcomponent.h(25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+  missile.cpp
+  ship.cpp
+c:\users\tyler\documents\github\gamelibrariesproject\ncgame\engine\animationcomponent.h(25): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  shipControllerComponent.cpp
+  states.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'SDL2.lib'

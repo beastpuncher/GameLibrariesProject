@@ -1,1 +1,45 @@
-﻿  Engine.vcxproj -> C:\Users\Tyler\Documents\GitHub\GameLibrariesProject\NCGame\Debug\Engine.dll
+﻿  aabb.cpp
+  aabbComponent.cpp
+  animationComponent.cpp
+  audioSystems.cpp
+  color.cpp
+  component.cpp
+  controllerComponent.cpp
+  debugDraw.cpp
+  explosion.cpp
+  engine.cpp
+  entity.cpp
+  eventManager.cpp
+  fileSystem.cpp
+  id.cpp
+  inputManager.cpp
+  kinematicComponent.cpp
+  object.cpp
+  physics.cpp
+  scene.cpp
+  shipExplosion.cpp
+  Generating Code...
+  Compiling...
+  spriteComponent.cpp
+  state.cpp
+  stateMachine.cpp
+  textComponent.cpp
+  texture.cpp
+  transform.cpp
+  transformComponent.cpp
+  transfromControllerComponent.cpp
+  waypoint.cpp
+  waypointControllerComponent.cpp
+  _math.cpp
+  matrix22.cpp
+  matrix33.cpp
+  renderer.cpp
+  text.cpp
+  TextManager.cpp
+  textureManager.cpp
+  timer.cpp
+  vector2D.cpp
+  vector3D.cpp
+  Generating Code...
+     Creating library C:\Users\Tyler\Documents\GitHub\GameLibrariesProject\NCGame\Debug\Engine.lib and object C:\Users\Tyler\Documents\GitHub\GameLibrariesProject\NCGame\Debug\Engine.exp
+  Engine.vcxproj -> C:\Users\Tyler\Documents\GitHub\GameLibrariesProject\NCGame\Debug\Engine.dll

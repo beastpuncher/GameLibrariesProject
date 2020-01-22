@@ -1,0 +1,75 @@
+﻿  aabb.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  aabbComponent.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  animationComponent.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  audioSystems.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  color.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  component.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  controllerComponent.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  debugDraw.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  enemyExplosion.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  engine.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  entity.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  eventManager.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  fileSystem.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  id.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  inputManager.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  kinematicComponent.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  object.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  physics.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  scene.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  shipExplosion.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  Compiling...
+  spriteComponent.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  state.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  stateMachine.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  textComponent.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  texture.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  transform.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  waypoint.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  _math.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  matrix22.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  matrix33.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  renderer.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  text.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  TextManager.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  textureManager.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  timer.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  vector2D.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
+  vector3D.cpp
+c:\users\tyler\source\repos\ncgame\engine\engine.h(16): fatal error C1083: Cannot open include file: 'sdl.h': No such file or directory
